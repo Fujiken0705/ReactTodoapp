@@ -4,6 +4,16 @@ import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [deadline, setDeadline] = useState("なし");
+  const deadlineChange = (e) => setDeadline(e.target.value);
+  const deadlineAfterChange = (e, todo) => {
+    const new_todos = [...todos];
+    const new_deadline = e.target.value;
+    const target_index = todos.findIndex((eachTodo) => eachTodo === todo);
+    new_todos[target_index].deadline = new_deadline;
+    setTodos(new_todos);
+  };
+
 
   const todoNameRef = useRef();
 
@@ -33,6 +43,16 @@ function App() {
     <>
       <TodoList todos = {todos} toggleTodo = {toggleTodo}/>
       <input type="text" ref={todoNameRef} />
+      <input
+              className="col-8 form-control"
+              type="date"
+              name="deadline"
+              value={deadline}
+              placeholder="締切日を選択してください。"
+              style={{ width: "200px" }}
+              onChange={(e) => deadlineChange(e)}
+              required
+            ></input>
       <button onClick={handleAddTodo}>タスクを追加</button>
       <button onClick={handleClear}>完了したタスクの削除</button>
       <div>残りのタスク:{todos.filter((todo) => !todo.completed).length}</div>
