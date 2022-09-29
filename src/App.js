@@ -22,7 +22,7 @@ function App() {
     const name = todoNameRef.current.value;
     if(name === "") return;
     setTodos((prevTodos) => {
-      return [...prevTodos,{id: uuidv4(),name: name, completed:false }];
+      return [...prevTodos,{id: uuidv4(),name: name, completed:false ,deadline:deadline}];
   });
    todoNameRef.current.value = null;
   };
