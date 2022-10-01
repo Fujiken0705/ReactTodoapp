@@ -11,7 +11,7 @@ const Todo = ({ todo, toggleTodo }) => {
       <label>
         <input 
           type= "checkbox" 
-          cheaked={todo.copleted} 
+          cheaked={todo.completed} 
           readonly
           onChange={handleTodoClick} 
         />
