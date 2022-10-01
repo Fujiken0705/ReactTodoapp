@@ -5,6 +5,15 @@ import { v4 as uuidv4 } from "uuid";
 function App() {
   const [todos, setTodos] = useState([]);
   const [deadline, setDeadline] = useState("なし");
+  const deadlineChange = (e) => setDeadline(e.target.value);
+
+  const deadlineAfterChange = (e, todo) => {
+    const new_todos = [...todos];
+    const new_deadline = e.target.value;
+    const target_index = todos.findIndex((eachTodo) => eachTodo === todo);
+    new_todos[target_index].deadline = new_deadline;
+    setTodos(new_todos);
+
   };
 
 
@@ -15,10 +24,11 @@ function App() {
     const name = todoNameRef.current.value;
     if(name === "") return;
     setTodos((prevTodos) => {
-      return [...prevTodos,{id: uuidv4(),name: name, completed:false ,deadline:deadline}];
+      return [...prevTodos,{id: uuidv4(),name: name + "  " + deadline, completed:false}];
   });
    todoNameRef.current.value = null;
   };
+  
 
   const toggleTodo = (id) => {
     const newTodos = [...todos];
@@ -26,15 +36,6 @@ function App() {
     todo.completed = !todo.completed;
     setTodos(newTodos);
   };
-
-  const deadlineChange = (e) => setDeadline(e.target.value);
-  
-  const deadlineAfterChange = (e, todo) => {
-    const new_todos = [...todos];
-    const new_deadline = e.target.value;
-    const target_index = todos.findIndex((eachTodo) => eachTodo === todo);
-    new_todos[target_index].deadline = new_deadline;
-    setTodos(new_todos);
   
   const handleClear = () => {
     const newTodos = todos.filter((todo) => !todo.completed);
@@ -43,7 +44,7 @@ function App() {
 
   return (
     <>
-      <TodoList todos = {todos} toggleTodo = {toggleTodo}/>
+     
       <input type="text" ref={todoNameRef} />
       <span className="col-2 input-group-text">期限</span>
             <input
@@ -59,6 +60,7 @@ function App() {
       <button onClick={handleAddTodo}>タスクを追加</button>
       <button onClick={handleClear}>完了したタスクの削除</button>
       <div>残りのタスク:{todos.filter((todo) => !todo.completed).length}</div>
+      <TodoList todos = {todos} toggleTodo = {toggleTodo} deadline ={deadline}/>
    </>
   );
 }
