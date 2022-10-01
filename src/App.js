@@ -5,13 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 function App() {
   const [todos, setTodos] = useState([]);
   const [deadline, setDeadline] = useState("なし");
-  const deadlineChange = (e) => setDeadline(e.target.value);
-  const deadlineAfterChange = (e, todo) => {
-    const new_todos = [...todos];
-    const new_deadline = e.target.value;
-    const target_index = todos.findIndex((eachTodo) => eachTodo === todo);
-    new_todos[target_index].deadline = new_deadline;
-    setTodos(new_todos);
   };
 
 
@@ -34,6 +27,15 @@ function App() {
     setTodos(newTodos);
   };
 
+  const deadlineChange = (e) => setDeadline(e.target.value);
+  
+  const deadlineAfterChange = (e, todo) => {
+    const new_todos = [...todos];
+    const new_deadline = e.target.value;
+    const target_index = todos.findIndex((eachTodo) => eachTodo === todo);
+    new_todos[target_index].deadline = new_deadline;
+    setTodos(new_todos);
+  
   const handleClear = () => {
     const newTodos = todos.filter((todo) => !todo.completed);
     setTodos(newTodos);
