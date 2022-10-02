@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Todo = ({ todo, toggleTodo, deadline }) => {
+const Todo = ({ todo, toggleTodo }) => {
 
   const handleTodoClick = ()=>{
     toggleTodo(todo.id);

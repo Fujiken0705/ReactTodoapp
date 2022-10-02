@@ -24,9 +24,11 @@ function App() {
     const name = todoNameRef.current.value;
     if(name === "") return;
     setTodos((prevTodos) => {
+      prevTodos.filter()
       return [...prevTodos,{id: uuidv4(),name: name + "  " + deadline, completed:false}];
   });
    todoNameRef.current.value = null;
+   <div>残りのタスク:{todos.filter((todo) => !todo.deadline)}</div>
   };
   
 
