@@ -7,16 +7,6 @@ function App() {
   const [deadline, setDeadline] = useState("なし");
   const deadlineChange = (e) => setDeadline(e.target.value);
 
-  const deadlineAfterChange = (e, todo) => {
-    const new_todos = [...todos];
-    const new_deadline = e.target.value;
-    const target_index = todos.findIndex((eachTodo) => eachTodo === todo);
-    new_todos[target_index].deadline = new_deadline;
-    setTodos(new_todos);
-
-  };
-
-
   const todoNameRef = useRef();
 
   const handleAddTodo = () => {
@@ -28,8 +18,11 @@ function App() {
       return [...prevTodos,{id: uuidv4(),name: name + "  " + deadline, completed:false}];
   });
    todoNameRef.current.value = null;
-   <div>残りのタスク:{todos.filter((todo) => !todo.deadline)}</div>
   };
+
+  // const AddDeadline = () => {
+  //   const newdeadline = [...deadline];
+  //   const deadline = 
   
 
   const toggleTodo = (id) => {
@@ -48,7 +41,7 @@ function App() {
     <>
      
       <input type="text" ref={todoNameRef} />
-      <span className="col-2 input-group-text">期限</span>
+      <span className="col-2 input-group-text">期限を入力する</span>
             <input
               className="col-8 form-control"
               type="date"
