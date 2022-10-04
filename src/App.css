@@ -1,0 +1,17 @@
+.AppTitle{
+    font-size: 40px;
+    text-align: center;
+    display: block;
+}
+
+.Appbody{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.taskinput{
+    text-align: center;
+}
+
+/* flexで子要素を水平方向の中央に配置する */

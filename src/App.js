@@ -1,6 +1,8 @@
 import { useState,useRef } from "react";
+import "./App.css";
 import TodoList from "./TodoList";
 import { v4 as uuidv4 } from "uuid";
+
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -38,10 +40,11 @@ function App() {
   };
 
   return (
-    <>
-     
-      <input type="text" ref={todoNameRef} />
-      <span className="col-2 input-group-text">期限を入力する</span>
+  <>
+    <title className = "AppTitle">簡易版Todoアプリ</title>
+    <body className = "Appbody">
+        <input type="text" ref={todoNameRef} className = "taskinput"/>
+        <span className="col-2 input-group-text">期限を入力する</span>
             <input
               className="col-8 form-control"
               type="date"
@@ -52,12 +55,15 @@ function App() {
               onChange={(e) => deadlineChange(e)}
               required
             ></input>
-      <button onClick={handleAddTodo}>タスクを追加</button>
-      <button onClick={handleClear}>完了したタスクの削除</button>
-      <div>残りのタスク:{todos.filter((todo) => !todo.completed).length}</div>
-      <TodoList todos = {todos} toggleTodo = {toggleTodo} deadline ={deadline}/>
-   </>
+        <button onClick={handleAddTodo}>タスクを追加</button>
+        <button onClick={handleClear}>完了したタスクの削除</button>
+        <div>残りのタスク:{todos.filter((todo) => !todo.completed).length}</div>
+        <TodoList todos = {todos} toggleTodo = {toggleTodo} deadline ={deadline}/>
+    </body>
+  </>
   );
 }
+
+//   Todolistは自作コンポーネント、なので自分で作らなければいけない。
 
 export default App;
