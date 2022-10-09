@@ -3,8 +3,9 @@ import "./App.css";
 import TodoList from "./TodoList";
 import { v4 as uuidv4 } from "uuid";
 
+import React from "react";
 
-function App() {
+const App = () => {
   const [todos, setTodos] = useState([]);
   const [deadline, setDeadline] = useState("なし");
   const deadlineChange = (e) => setDeadline(e.target.value);
@@ -16,15 +17,11 @@ function App() {
     const name = todoNameRef.current.value;
     if(name === "") return;
     setTodos((prevTodos) => {
-      prevTodos.filter()
       return [...prevTodos,{id: uuidv4(),name: name + "  " + deadline, completed:false}];
   });
    todoNameRef.current.value = null;
   };
 
-  // const AddDeadline = () => {
-  //   const newdeadline = [...deadline];
-  //   const deadline = 
   
 
   const toggleTodo = (id) => {
@@ -45,7 +42,7 @@ function App() {
     <body className = "Appbody">
         <input type="text" ref={todoNameRef} className = "taskinput"/>
         <span className="col-2 input-group-text">期限を入力する</span>
-            <input
+          <input
               className="col-8 form-control"
               type="date"
               name="deadline"
@@ -54,12 +51,16 @@ function App() {
               style={{ width: "200px" }}
               onChange={(e) => deadlineChange(e)}
               required
-            ></input>
+          />
         <button onClick={handleAddTodo}>タスクを追加</button>
         <button onClick={handleClear}>完了したタスクの削除</button>
-        <div>残りのタスク:{todos.filter((todo) => !todo.completed).length}</div>
-        <TodoList todos = {todos} toggleTodo = {toggleTodo} deadline ={deadline}/>
     </body>
+    <div className = "todo">
+    <TodoList todos = {todos} toggleTodo = {toggleTodo} deadline ={deadline}/>
+    </div >
+    <div className = "remaintask">
+    残りのタスク:{todos.filter((todo) => !todo.completed).length}
+    </div>
   </>
   );
 }

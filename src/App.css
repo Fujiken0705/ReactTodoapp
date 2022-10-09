@@ -14,4 +14,8 @@
     text-align: center;
 }
 
+.todo{
+    text-align: center;
+}
+
 /* flexで子要素を水平方向の中央に配置する */
