@@ -40,8 +40,9 @@ const App = () => {
   <>
     <title className = "AppTitle">簡易版Todoアプリ</title>
     <body className = "Appbody">
+        <span>タスクを入力</span>
         <input type="text" ref={todoNameRef} className = "taskinput"/>
-        <span className="col-2 input-group-text">期限を入力する</span>
+        <span className="col-2 input-group-text">期限を入力</span>
           <input
               className="col-8 form-control"
               type="date"
