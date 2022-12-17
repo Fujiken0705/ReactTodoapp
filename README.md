@@ -2,5 +2,7 @@
 ---
 Reactを使ったTodoアプリ練習用
 
-https://user-images.githubusercontent.com/112185666/208224353-1f050c5e-a38d-457e-8a3a-e31cce008212.mov
+
+
+https://user-images.githubusercontent.com/112185666/208228562-d85c1ae2-bfdf-48d1-821a-9f0745922887.mp4
 
